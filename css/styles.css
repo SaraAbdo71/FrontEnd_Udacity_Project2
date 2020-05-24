@@ -7,7 +7,9 @@
  * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
  *
 */
-
+html {
+    scroll-behavior: smooth;
+  }
 
 /* ---- Base Rules ---- */
 body {
@@ -98,6 +100,9 @@ section {
     transition: ease 0.3s all;
 }
 
+.navbar__menu:hover{
+    cursor: pointer;
+}
 /* Header Styles */
 .page__header {
     background: #fff;
@@ -231,4 +236,15 @@ section.your-active-class .landing__container::after {
 		           translate(-1em) 
 		           rotate(-360deg);
 	}
+}
+
+
+
+.active{
+    border: 0.5px;
+    border-style:outset;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px grey;
+    color:grey;
+    background:rgba(3, 2, 3, 0.58);
 }
