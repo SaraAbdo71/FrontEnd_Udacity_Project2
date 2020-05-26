@@ -1,55 +1,58 @@
 /**
- *
+ * 
  * Manipulating the DOM exercise.
  * Exercise programmatically builds navigation,
  * scrolls to anchors from navigation,
  * and highlights section in viewport upon scrolling.
- *
+ * 
  * Dependencies: None
- *
+ * 
  * JS Version: ES2015/ES6
- *
+ * 
  * JS Standard: ESlint
- *
- */
+ * 
+*/
 
 /**
  * Define Global Variables
- *
- */
-let showThis = true;
-let li;
-let navScroll;
-
+ * 
+*/
+let newList;
+let listView;
+let sections;
 /**
  * End Global Variables
  * Start Helper Functions
- *
- */
+ * 
+*/
+/**
+ * End Helper Functions
+ * Begin Main Functions
+ * 
+*/
 
-//to hide and show section//
-function showSection() {
-  if (document.getElementById("section0").click) {
-    document.getElementById("section2").style.display = "none";
-    document.getElementById("section3").style.display = "none";
-  } else if (document.getElementById("section2").click) {
-    document.getElementById("section1").style.display = "none";
-    document.getElementById("section3").style.display = "none";
-  } else {
-    document.getElementById("section1").style.display = "none";
-    document.getElementById("section2").style.display = "none";
-  }
-  showSection();
+// build the nav
+listView = document.getElementById("navbar__list");
+sections = document.getElementsByTagName("section");
+// Add links
+for (i = 0; i < sections.length; i++) {
+   newList = document.createElement("li");
+  newList.innerHTML =
+    '<a href ="#" class="menu__link " data-section="' +
+    sections[i].getAttribute("id") +
+    '">' +
+    sections[i].getAttribute("id") +
+    "</a>";
+     listView.appendChild(newList);
 }
 
-/*****/
+
 // to hide and show NavBar//
 navScroll = window.pageXOffset;
-var timer = null;
+let timer = null;
 
 window.onscroll = function () {
   
-
   var header = document.getElementsByClassName("page__header")[0];
   if (timer !== null) {
     clearTimeout(timer);
@@ -59,7 +62,7 @@ window.onscroll = function () {
     header.style = "display: block;";
   } else {
     header.style = "display: absolute;";
-    header.onmouseover = function(){
+    header.onmouseover = function (){
         console.log("mouseover");
         if (timer !== null) {
             clearTimeout(timer);
@@ -68,87 +71,51 @@ window.onscroll = function () {
     };
     timer = setTimeout(function () {
       header.style = "display: none;";
-    }, 1000);
+    }, 800);
   }
 
-  //   navScroll = currentScroll;
 };
 
-
-
-// sections collapsible
-
-let secColla = document.getElementsByClassName("landing__container");
-let i;
-
-for (i = 0; i < secColla.length; i++) {
-  secColla[i].addEventListener("click", function () {
-    this.classList.toggle("active");
-    let content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
-  });
-}
-
-/**
- * End Helper Functions
- * Begin Main Functions
- *
- */
-
-// build the nav
-
-var listView = document.getElementById("navbar__list");
-var sections = document.getElementsByTagName("section");
-// Add links
-for (i = 0; i < sections.length; i++) {
-  var newList = document.createElement("li");
-  newList.innerHTML =
-    '<a href ="#" class="nav-link" data-section="' +
-    sections[i].getAttribute("id") +
-    '">' +
-    sections[i].getAttribute("id") +
-    "</a>";
-  listView.appendChild(newList);
-}
+// Add class 'active' to section when near top of viewport
 
 // Add listener
-var scrollFun = function (e) {
-  e.preventDefault();
-  var sec_id = this.getAttribute("data-section");
-  var sec = document.getElementById(sec_id);
-  sec.scrollIntoView();
-  // Set class active
-  var sections = document.getElementsByTagName("section");
-  for (var i = 0; i < sections.length; i++)
-    sections[i].classList.remove("active");
-  sec.classList.add("active");
-  
-  // window.location = "#" + sec_id;
-  return false;
-};
-//
-var elements = document.getElementsByClassName("nav-link");
+let scrollFun = function (e) {
+    e.preventDefault();
+   let sec_id = this.getAttribute("data-section");
+    let sec = document.getElementById(sec_id);
+    sec.scrollIntoView();
+    // Set class active
+    sections = document.getElementsByTagName("section");
+    for (let i = 0; i < sections.length; i++){
+     sections[i].classList.remove("your-active-class") 
+     sec.classList.add('keyframes');
+     sec.classList.add("your-active-class");
+    }
+    return false;
+  };
+  let elements = document.getElementsByClassName("menu__link");
 for (i = 0; i < elements.length; i++) {
   elements[i].addEventListener("click", scrollFun, false);
 }
 
-
-// Add class 'active' to section when near top of viewport
-
-
 // Scroll to anchor ID using scrollTO event
+
+
 
 /**
  * End Main Functions
- * Begin Events
- *
- */
+ * Begin EventsscrollIntoView
+ * 
+*/
 
-// Build menu
+// Build menu 
+// duild New Section
+let str='<section id="section4" data-nav="Section 4">';
+          str+=  '<div class="landing__container>';
+             str+= '<h2>Section </h2>';
+               str+='<ol><li>One</li><li>Two</li><li>Three</li><li>Four</li><li>Five</li></ul></div></section>';
+
+document.getElementsByTagName('main').appendChild(str);
 
 // Scroll to section on link click
 

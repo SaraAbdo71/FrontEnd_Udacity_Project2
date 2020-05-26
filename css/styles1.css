@@ -7,10 +7,10 @@
  * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
  *
 */
-
 html {
     scroll-behavior: smooth;
   }
+
 /* ---- Base Rules ---- */
 body {
     background: rgb(136,203,171);
@@ -69,17 +69,27 @@ section {
 .navbar__menu ul {
     padding-left: 0;
     margin: 0;
-    text-align:center;
+    text-align: right;
+
+    list-style: none;
+    
+    margin: 10; 
+    padding:10; 
+    display: flex;
+    justify-content: space-between;
 }
 
 .navbar__menu li {
     display: inline-block;
 }
 
+.navbar__menu a{
+    text-decoration: none;
+}
 .navbar__menu .menu__link {
     display: block;
-    padding: 1em;
-    font-weight: bold;
+    padding: 5em;
+    font-weight: bolder;
     text-decoration: none;
     color: #000;
 }
@@ -89,22 +99,10 @@ section {
     color: #fff;
     transition: ease 0.3s all;
 }
-.active {
-    background: #333;
-    color: #fff;
-    border: 0.5px;
-    border-style:outset;
-    border-radius: 25px;
-    box-shadow: 5px 5px 5px lightblue;
-    color:darkorchid!important;
-    background:rgba(3, 2, 3, 0.58);
-}
-.active1{
-    background:rgba(3, 2, 3, 0.58)!important;
-    color: blueviolet;
-}
 
-
+.navbar__menu:hover{
+    cursor: pointer;
+}
 /* Header Styles */
 .page__header {
     background: #fff;
@@ -112,6 +110,7 @@ section {
     top: 0;
     width: 100%;
     z-index: 5;
+    font-size: larger;
 }
 
 /* Footer Styles */
@@ -237,4 +236,13 @@ section.your-active-class .landing__container::after {
 		           translate(-1em) 
 		           rotate(-360deg);
 	}
+}
+
+.active{
+    border: 0.5px;
+    border-style:outset;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px grey;
+    color:grey;
+    background:rgba(3, 2, 3, 0.58);
 }
